@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 class UserDataService {
     
     static let instance = UserDataService()
@@ -32,8 +34,23 @@ class UserDataService {
         self.avatarName = avatarName
     }
     
-    func returnUIColor(components: String) -> UIColor {
-        let scanner = Scanner (string: components)
+    func logoutUser() {
+        id = ""
+        avatarName = ""
+        avatarColor = ""
+        email = ""
+        name = ""
+        AuthService.instance.isLoggedIn = false
+        AuthService.instance.userEmail = ""
+        AuthService.instance.authToken = ""
+        
+        
+    }
+    
+}
+extension String {
+    func returnUIColor() -> UIColor {
+        let scanner = Scanner (string: self)
         let skipped = CharacterSet (charactersIn: "[], ")
         let comma = CharacterSet (charactersIn: ",")
         
@@ -51,10 +68,9 @@ class UserDataService {
         guard let gUnwrapped = g else { return defaultColor }
         guard let bUnwrapped = b else { return defaultColor }
         guard let aUnwrapped = a else { return defaultColor }
-
+        
         
         return UIColor (red: CGFloat(rUnwrapped.doubleValue), green: CGFloat(gUnwrapped.doubleValue), blue: CGFloat(bUnwrapped.doubleValue), alpha: CGFloat(aUnwrapped.doubleValue))
         
     }
-    
 }

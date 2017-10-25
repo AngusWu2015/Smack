@@ -27,7 +27,7 @@ class ChannelVC: UIViewController {
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
             
             userImg.image = UIImage (named: UserDataService.instance.avatarName)
-            userImg.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
+            userImg.backgroundColor = UserDataService.instance.avatarColor.returnUIColor()
         } else {
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage (named: "menuProfileIcon")
@@ -36,8 +36,14 @@ class ChannelVC: UIViewController {
     }
     
     @IBAction func LoginBtnPressed(_ sender: Any) {
-        if AuthService.instance.isLoggedIn { return }
-        performSegue(withIdentifier: TO_LOFIN, sender: nibName)
+        if AuthService.instance.isLoggedIn {
+            //Show profile page
+             let profil = ProfileVC()
+            profil.modalPresentationStyle = .custom
+            present(profil, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: TO_LOFIN, sender: nibName)
+        }
     }
     
     @IBAction func unwindFromSkillVC(unwindSegue: UIStoryboardSegue) {
