@@ -21,6 +21,8 @@
 		E8C761231FA07EA8008A2059 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761221FA07EA8008A2059 /* UserDataService.swift */; };
 		E8C761251FA09396008A2059 /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761241FA09396008A2059 /* AvatarPickerVC.swift */; };
 		E8C761271FA097DD008A2059 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761261FA097DD008A2059 /* AvatarCell.swift */; };
+		E8C761291FA0AFA5008A2059 /* ClicleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761281FA0AFA5008A2059 /* ClicleImage.swift */; };
+		E8C7612C1FA0E647008A2059 /* MBProgressHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7612B1FA0E647008A2059 /* MBProgressHUDView.swift */; };
 		E8E81A951F960106008729A4 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FF9CE51F95E93300670303 /* SWRevealViewController.m */; };
 		E8E81A971F962E71008729A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E81A961F962E71008729A4 /* GradientView.swift */; };
 		E8FF9CE71F95EEFE00670303 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF9CE61F95EEFE00670303 /* ChannelVC.swift */; };
@@ -44,6 +46,8 @@
 		E8C761221FA07EA8008A2059 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		E8C761241FA09396008A2059 /* AvatarPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
 		E8C761261FA097DD008A2059 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		E8C761281FA0AFA5008A2059 /* ClicleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClicleImage.swift; sourceTree = "<group>"; };
+		E8C7612B1FA0E647008A2059 /* MBProgressHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDView.swift; sourceTree = "<group>"; };
 		E8E81A961F962E71008729A4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E8FF9CE31F95E93200670303 /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8FF9CE41F95E93300670303 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				E8E81A961F962E71008729A4 /* GradientView.swift */,
 				E8C761201F9D9E72008A2059 /* RoundedButton.swift */,
 				E8C761261FA097DD008A2059 /* AvatarCell.swift */,
+				E8C761281FA0AFA5008A2059 /* ClicleImage.swift */,
+				E8C7612B1FA0E647008A2059 /* MBProgressHUDView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Smack/Pods-Smack-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -275,6 +282,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -310,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E844E4251F95E1AB00A4E90A /* ChatVC.swift in Sources */,
+				E8C761291FA0AFA5008A2059 /* ClicleImage.swift in Sources */,
 				E8C761251FA09396008A2059 /* AvatarPickerVC.swift in Sources */,
 				E8C761211F9D9E72008A2059 /* RoundedButton.swift in Sources */,
 				E8FF9CE71F95EEFE00670303 /* ChannelVC.swift in Sources */,
@@ -321,6 +330,7 @@
 				E8C761271FA097DD008A2059 /* AvatarCell.swift in Sources */,
 				E844E4231F95E1AB00A4E90A /* AppDelegate.swift in Sources */,
 				E8E81A951F960106008729A4 /* SWRevealViewController.m in Sources */,
+				E8C7612C1FA0E647008A2059 /* MBProgressHUDView.swift in Sources */,
 				E84327681F964F5700575C0C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

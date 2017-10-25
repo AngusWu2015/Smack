@@ -131,7 +131,7 @@
                                 <rect key="frame" x="265" y="81" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ww1-PN-S4P">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ww1-PN-S4P" customClass="ClicleImage" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="11" y="577" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="7Zc-gO-03G"/>
@@ -238,6 +238,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createLoginBtnPressed:" destination="SHh-UE-fDJ" eventType="touchUpInside" id="Wah-en-HdH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-zH-721">
                                 <rect key="frame" x="36" y="170" width="303" height="30"/>
@@ -335,6 +338,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="passwordTxt" destination="DZX-iO-eWG" id="PnB-5j-ubD"/>
+                        <outlet property="usernameTxt" destination="n6I-zH-721" id="S2Z-sz-6S3"/>
                         <segue destination="20K-tv-Mg1" kind="show" identifier="toCreateAccount" id="C0d-rU-TgC"/>
                     </connections>
                 </viewController>
@@ -435,7 +440,7 @@
                                     <constraint firstItem="bji-5b-Txb" firstAttribute="leading" secondItem="sTF-23-Pa8" secondAttribute="leading" id="haB-b9-B1z"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="FqQ-0I-vui">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="FqQ-0I-vui" customClass="ClicleImage" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="320" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="11h-tc-Ycz"/>
