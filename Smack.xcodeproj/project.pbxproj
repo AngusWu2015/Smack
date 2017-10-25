@@ -19,6 +19,8 @@
 		E8C760E71F9A122A008A2059 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C760E61F9A122A008A2059 /* AuthService.swift */; };
 		E8C761211F9D9E72008A2059 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761201F9D9E72008A2059 /* RoundedButton.swift */; };
 		E8C761231FA07EA8008A2059 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761221FA07EA8008A2059 /* UserDataService.swift */; };
+		E8C761251FA09396008A2059 /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761241FA09396008A2059 /* AvatarPickerVC.swift */; };
+		E8C761271FA097DD008A2059 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C761261FA097DD008A2059 /* AvatarCell.swift */; };
 		E8E81A951F960106008729A4 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FF9CE51F95E93300670303 /* SWRevealViewController.m */; };
 		E8E81A971F962E71008729A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E81A961F962E71008729A4 /* GradientView.swift */; };
 		E8FF9CE71F95EEFE00670303 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF9CE61F95EEFE00670303 /* ChannelVC.swift */; };
@@ -40,6 +42,8 @@
 		E8C760E61F9A122A008A2059 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E8C761201F9D9E72008A2059 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E8C761221FA07EA8008A2059 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		E8C761241FA09396008A2059 /* AvatarPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
+		E8C761261FA097DD008A2059 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		E8E81A961F962E71008729A4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E8FF9CE31F95E93200670303 /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8FF9CE41F95E93300670303 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				E8FF9CE61F95EEFE00670303 /* ChannelVC.swift */,
 				E84327691F9655DB00575C0C /* LoginVC.swift */,
 				E843276B1F96601C00575C0C /* CreateAccountVC.swift */,
+				E8C761241FA09396008A2059 /* AvatarPickerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			children = (
 				E8E81A961F962E71008729A4 /* GradientView.swift */,
 				E8C761201F9D9E72008A2059 /* RoundedButton.swift */,
+				E8C761261FA097DD008A2059 /* AvatarCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E844E4251F95E1AB00A4E90A /* ChatVC.swift in Sources */,
+				E8C761251FA09396008A2059 /* AvatarPickerVC.swift in Sources */,
 				E8C761211F9D9E72008A2059 /* RoundedButton.swift in Sources */,
 				E8FF9CE71F95EEFE00670303 /* ChannelVC.swift in Sources */,
 				E8C761231FA07EA8008A2059 /* UserDataService.swift in Sources */,
@@ -311,6 +318,7 @@
 				E8C760E71F9A122A008A2059 /* AuthService.swift in Sources */,
 				E843276A1F9655DB00575C0C /* LoginVC.swift in Sources */,
 				E8E81A971F962E71008729A4 /* GradientView.swift in Sources */,
+				E8C761271FA097DD008A2059 /* AvatarCell.swift in Sources */,
 				E844E4231F95E1AB00A4E90A /* AppDelegate.swift in Sources */,
 				E8E81A951F960106008729A4 /* SWRevealViewController.m in Sources */,
 				E84327681F964F5700575C0C /* Constants.swift in Sources */,
