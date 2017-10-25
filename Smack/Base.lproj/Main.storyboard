@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -223,7 +223,7 @@
                                     <segue destination="Ti8-B8-jv2" kind="unwind" unwindAction="unwindFromSkillVCWithUnwindSegue:" id="I80-7N-e95"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e66-eU-lrr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e66-eU-lrr" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="36" y="331" width="303" height="60"/>
                                 <color key="backgroundColor" red="0.42149049043655396" green="0.6170574426651001" blue="0.78046488761901855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -233,6 +233,11 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-zH-721">
                                 <rect key="frame" x="36" y="170" width="303" height="30"/>
@@ -446,6 +451,9 @@
                                 <state key="normal" title="Choose avatar">
                                     <color key="titleColor" red="0.42149049039999997" green="0.61705744269999996" blue="0.78046488759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="pickAvatarPressed:" destination="20K-tv-Mg1" eventType="touchUpInside" id="ucU-X4-Cg8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2d-EP-aK7">
                                 <rect key="frame" x="104.5" y="448" width="166" height="28"/>
@@ -453,8 +461,11 @@
                                 <state key="normal" title="Generate background color">
                                     <color key="titleColor" red="0.42149049039999997" green="0.61705744269999996" blue="0.78046488759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="pickBGColorPressed:" destination="20K-tv-Mg1" eventType="touchUpInside" id="ZVb-Ub-e1b"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTS-dq-yWz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTS-dq-yWz" customClass="RoundedButton" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="36" y="587" width="303" height="60"/>
                                 <color key="backgroundColor" red="0.42149049039999997" green="0.61705744269999996" blue="0.78046488759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -464,8 +475,13 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="createAccountBtnPressed:" destination="20K-tv-Mg1" eventType="touchUpInside" id="2sK-CO-qda"/>
+                                    <action selector="createAccntPressed:" destination="20K-tv-Mg1" eventType="touchUpInside" id="aaV-8C-7Pj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -490,6 +506,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTxt" destination="fC9-w9-Tfo" id="7xL-QS-SEA"/>
+                        <outlet property="passTxt" destination="DJn-Hr-rkO" id="230-Hg-ezv"/>
+                        <outlet property="userImg" destination="FqQ-0I-vui" id="ybT-Go-Y4j"/>
+                        <outlet property="usernameTxt" destination="Wiv-DE-p5H" id="Sp7-yv-mJb"/>
                         <segue destination="rdl-yA-GjI" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="OVy-yg-2Eg"/>
                     </connections>
                 </viewController>
