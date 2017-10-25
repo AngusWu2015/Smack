@@ -23,9 +23,9 @@ class LoginVC: UIViewController {
     @IBAction func createLoginBtnPressed(_ sender: Any) {
         guard let name = usernameTxt.text ,usernameTxt.text != "" else { return }
         guard let pass = passwordTxt.text , passwordTxt.text != "" else { return }
-        MBProgressHUDView.instance.ShowHUD(view: self.view, text: LOADING)
+        view.ShowHUD(text: LOADING)
         AuthService.instance.loginUser(email: name, password: pass) { (success) in
-            MBProgressHUDView.instance.HideHUD(view: self.view)
+            self.view.HideHUD()
             if success {
                 print("登入成功")
             }else{

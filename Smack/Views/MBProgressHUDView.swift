@@ -9,14 +9,14 @@
 import Foundation
 import MBProgressHUD
 
-class MBProgressHUDView {
-    static let instance = MBProgressHUDView()
-    func ShowHUD(view: UIView,text: String){
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+extension UIView {
+    
+    func ShowHUD(text: String){
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.label.text = text
     }
     
-    func HideHUD(view: UIView) {
-        MBProgressHUD.hide(for: view, animated: true)
+    func HideHUD() {
+        MBProgressHUD.hide(for: self, animated: true)
     }
 }
