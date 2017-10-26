@@ -17,7 +17,7 @@ let BASE_URL = "http://chatchatwu.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_USER_ADD = "\(BASE_URL)user/add"
-
+let URL_GET_CHANNELS = "\(BASE_URL)channel/"
 //Seguse
 let TO_LOFIN = "tologin"
 let TO_CREATEACCOUNT = "toCreateAccount"
