@@ -13,7 +13,7 @@ extension UIView {
     
     func ShowHUD(text: String){
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.label.text = text
+         hud.label.text = text
     }
     
     func HideHUD() {

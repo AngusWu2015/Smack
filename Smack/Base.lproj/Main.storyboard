@@ -130,6 +130,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5f-E5-llL">
                                 <rect key="frame" x="265" y="81" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
+                                <connections>
+                                    <action selector="addChannelPressed:" destination="E6Y-x1-dHk" eventType="touchUpInside" id="SYZ-Tc-2EI"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ww1-PN-S4P" customClass="ClicleImage" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="11" y="577" width="75" height="75"/>
@@ -142,7 +145,7 @@
                                 <rect key="frame" x="0.0" y="123" width="375" height="434"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="waO-xx-FGR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="channelCell" id="waO-xx-FGR" customClass="ChannelCell" customModule="Smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="waO-xx-FGR" id="eFA-ub-n8u">
@@ -162,6 +165,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="channelName" destination="ZOO-0c-HH4" id="lqI-cu-Xqp"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -197,6 +203,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="0GB-tS-ieM" id="lTF-f2-g3V"/>
+                        <outlet property="tableView" destination="mJf-xr-NVb" id="K7d-Ss-TMK"/>
                         <outlet property="userImg" destination="Ww1-PN-S4P" id="ggl-4Q-FBP"/>
                         <segue destination="SHh-UE-fDJ" kind="show" identifier="tologin" id="GUm-we-8mI"/>
                     </connections>

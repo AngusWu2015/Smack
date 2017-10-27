@@ -20,6 +20,7 @@
             <connections>
                 <outlet property="bgview" destination="45d-0m-mzF" id="kVq-yf-SF4"/>
                 <outlet property="email" destination="8zE-2U-7wy" id="QYs-Vz-2hg"/>
+                <outlet property="showView" destination="AI1-tE-dmy" id="evt-dx-E2W"/>
                 <outlet property="userImg" destination="ah9-WR-Yby" id="Eoc-qI-0qt"/>
                 <outlet property="userName" destination="qtd-rI-sVD" id="Zsl-vK-KfP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
