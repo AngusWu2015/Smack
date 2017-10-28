@@ -78,14 +78,22 @@ class ProfilePushSegue: UIStoryboardSegue {
         VCBVC.view.frame = CGRect (x: 0, y: 0, width: screenWidth, height: screenHeight)
         
         
-        
-        //開始轉場
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.65, initialSpringVelocity: 1.0, options: [ .beginFromCurrentState, .allowUserInteraction ], animations: {
             VCBVC.bgview.alpha = 0.3
             VCBVC.showView.center = VCBVC.bgview.center
         }) { (finsish) in
             self.source.present(self.destination as UIViewController, animated: false, completion: nil)
         }
+        
+        //開始轉場
+        
+        
+//        UIView.animate(withDuration: 0.3, animations: {
+//            VCBVC.bgview.alpha = 0.3
+//            VCBVC.showView.center = VCBVC.bgview.center
+//        }) { (finsish) in
+//            self.source.present(self.destination as UIViewController, animated: false, completion: nil)
+//        }
         
     }
 }

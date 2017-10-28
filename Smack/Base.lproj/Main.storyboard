@@ -92,6 +92,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="channelNameLbl" destination="yJ2-1t-0Wk" id="p2y-5h-H5g"/>
                         <outlet property="menuBtn" destination="ozy-EL-BOI" id="W6Q-dG-daS"/>
                     </connections>
                 </viewController>
@@ -160,8 +161,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZOO-0c-HH4" firstAttribute="centerY" secondItem="eFA-ub-n8u" secondAttribute="centerY" id="22o-iZ-cYC"/>
+                                                <constraint firstItem="ZOO-0c-HH4" firstAttribute="centerY" secondItem="eFA-ub-n8u" secondAttribute="centerY" priority="750" id="22o-iZ-cYC"/>
                                                 <constraint firstItem="ZOO-0c-HH4" firstAttribute="leading" secondItem="eFA-ub-n8u" secondAttribute="leadingMargin" constant="20" id="Fle-4U-7X2"/>
+                                                <constraint firstItem="ZOO-0c-HH4" firstAttribute="top" secondItem="eFA-ub-n8u" secondAttribute="topMargin" constant="4" id="UcM-cX-olQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZOO-0c-HH4" secondAttribute="bottom" constant="3" id="XqQ-Db-CTb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -21,11 +21,20 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
         
         userDataDIdChange(Notification(name: NOTIF_USER_DATA_DID_CHANGE))
         
         NotificationCenter.default.addObserver(self, selector: #selector(userDataDIdChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
         
+        //監聽新增的房間
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
         
         
     }
@@ -34,21 +43,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupUserInfo()
         
     }
-    func updataChannel() {
-        MessageService.instance.findAllChannel { (success) in
-            if success {
-                self.tableView .reloadData()
-            }
-        }
-    }
-    
-    func rmAllChannel() {
-        MessageService.instance.channels.removeAll()
-        self.tableView.reloadData()
-    }
     
     @objc func userDataDIdChange(_ notif:Notification) {
         setupUserInfo()
+    }
+    
+    @objc func channelsLoaded(_ notif:Notification) {
+        tableView.reloadData()
     }
     
     func setupUserInfo() {
@@ -57,18 +58,22 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             userImg.image = UIImage (named: UserDataService.instance.avatarName)
             userImg.backgroundColor = UserDataService.instance.avatarColor.returnUIColor()
-            updataChannel()
+            //updataChannel()
             
         } else {
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage (named: "menuProfileIcon")
             userImg.backgroundColor = UIColor .clear
-            rmAllChannel()
+            tableView.reloadData()
+            //rmAllChannel()
             
         }
     }
     
     @IBAction func addChannelPressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIn { return }
+        
+        
         let addChannel = AddChannelVC()
         addChannel.modalTransitionStyle = .crossDissolve
         addChannel.modalPresentationStyle = .custom
@@ -112,5 +117,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels[indexPath.row]
+        MessageService.instance.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
+        self.revealViewController().revealToggle(animated: true)
     }
 }
