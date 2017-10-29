@@ -80,7 +80,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func addChannelPressed(_ sender: Any) {
-        if AuthService.instance.isLoggedIn { return }
+        if !AuthService.instance.isLoggedIn { return }
         
         
         let addChannel = AddChannelVC()
