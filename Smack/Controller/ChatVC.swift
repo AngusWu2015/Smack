@@ -15,6 +15,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var typingUsersLbl: UILabel!
     
     var isTyping = false
     
@@ -35,11 +36,12 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        
+        //登入&登出處理
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDIdChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-        
+        //選擇渠道處理
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
+        // 監聽訊息
         SocketService.instance.getMessage { (success) in
             if success {
                 self.tableView.reloadData()
@@ -49,7 +51,35 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+        // 監聽輸入？XDD
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return }
+            var names = ""
+            var numberOfTypers = 0
+            
+            for (typingUser, channel) in typingUsers {
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            if numberOfTypers > 0 && AuthService.instance.isLoggedIn == true {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLbl.text = "\(names) \(verb) typing a message"
+            } else {
+                self.typingUsersLbl.text = ""
+            }
+            
+        }
         
+        //判斷是否有登入
         if AuthService.instance.isLoggedIn {
             view.ShowHUD(text: "")
             AuthService.instance.findUserByEmail(completion: { (success) in
@@ -98,6 +128,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         let indIndex = IndexPath (row: MessageService.instance.messages.count - 1, section: 0)
                         self.tableView.scrollToRow(at: indIndex, at: .bottom, animated: false)
                     }
+                    self.isTyping = false
+                    self.sendBtn.isEnabled = false
+                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
                 }
             })
         }
@@ -124,13 +157,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    //判斷send 是否出現 ＆ 發送、結束 正在打字....
     @IBAction func messageBoxEditing(_ sender: Any) {
+        guard let channelId = MessageService.instance.selectedChannel?.id else {
+            return
+        }
         if messageTxtBox.text == "" {
             isTyping = false
             sendBtn.isEnabled = false
+            SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
         } else {
             if isTyping == false {
                 sendBtn.isEnabled = true
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
