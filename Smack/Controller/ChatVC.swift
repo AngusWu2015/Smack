@@ -14,16 +14,19 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendBtn: UIButton!
+    
+    var isTyping = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.bindToKeyboard()
-        
         tableView.dataSource = self
         tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 80.0
+        sendBtn.isEnabled = false
         
         let tap = UITapGestureRecognizer (target: self, action: #selector(ChatVC.handleTap))
         view.addGestureRecognizer(tap)
@@ -36,6 +39,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDIdChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
+        SocketService.instance.getMessage { (success) in
+            if success {
+                self.tableView.reloadData()
+                if MessageService.instance.messages.count > 0  && self.tableView.contentOffset.y < (self.tableView.contentSize.height - self.tableView.frame.size.height){
+                    let indIndex = IndexPath (row: MessageService.instance.messages.count - 1, section: 0)
+                    self.tableView.scrollToRow(at: indIndex, at: .bottom, animated: false)
+                }
+            }
+        }
         
         if AuthService.instance.isLoggedIn {
             view.ShowHUD(text: "")
@@ -53,6 +66,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             onLoginGetMessages()
         } else {
             channelNameLbl.text = "請登入"
+            tableView.reloadData()
         }
     }
     
@@ -80,6 +94,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if success {
                     self.messageTxtBox.text = ""
                     self.messageTxtBox.resignFirstResponder()
+                    if  self.tableView.contentOffset.y == (self.tableView.contentSize.height - self.tableView.frame.size.height){
+                        let indIndex = IndexPath (row: MessageService.instance.messages.count - 1, section: 0)
+                        self.tableView.scrollToRow(at: indIndex, at: .bottom, animated: false)
+                    }
                 }
             })
         }
@@ -104,6 +122,17 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if success {
                 self.tableView.reloadData()
             }
+        }
+    }
+    @IBAction func messageBoxEditing(_ sender: Any) {
+        if messageTxtBox.text == "" {
+            isTyping = false
+            sendBtn.isEnabled = false
+        } else {
+            if isTyping == false {
+                sendBtn.isEnabled = true
+            }
+            isTyping = true
         }
     }
     
