@@ -27,11 +27,20 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         userDataDIdChange(Notification(name: NOTIF_USER_DATA_DID_CHANGE))
         
         NotificationCenter.default.addObserver(self, selector: #selector(userDataDIdChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
         
         //監聽新增的房間
         SocketService.instance.getChannel { (success) in
             if success {
+                self.tableView.reloadData()
+            }
+        }
+        
+        //監聽新訊息
+        SocketService.instance.getMessage { (newMessage) in
+            if newMessage.channelId != MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
+                MessageService.instance.unreadChannels.append(newMessage.channelId)
                 self.tableView.reloadData()
             }
         }
@@ -122,8 +131,16 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let channel = MessageService.instance.channels[indexPath.row]
         MessageService.instance.selectedChannel = channel
-        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         
+        //刪除未讀標籤
+        if MessageService.instance.unreadChannels.count > 0 {
+            MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channel.id}
+        }
+        let index = IndexPath(row: indexPath.row, section: 0)
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+        
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         self.revealViewController().revealToggle(animated: true)
     }
 }
